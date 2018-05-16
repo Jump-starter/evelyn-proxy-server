@@ -1,0 +1,19 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    - duration: 30
+      arrivalRate: 10
+      name: "High traffic"
+    - duration: 10
+      arrivalRate: 1
+      name: "Slow down"
+  defaults:
+    headers:
+      x-my-service-auth: '987401838271002188298567'
+scenarios:
+  - name: "browsing"
+    flow:
+      - loop:
+        - get:
+            url: "/"
+        count: 50
